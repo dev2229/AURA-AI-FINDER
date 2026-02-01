@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { AITool } from "../types";
+import { AITool } from "../types.ts";
 
 const TOOL_SCHEMA = {
   type: Type.ARRAY,
@@ -26,10 +26,11 @@ const TOOL_SCHEMA = {
 };
 
 export async function findToolsForTask(query: string): Promise<AITool[]> {
-  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : null;
+  // Fixed: Access process.env.API_KEY directly as required by the Gemini API integration rules.
+  const apiKey = process.env.API_KEY;
   
   if (!apiKey) {
-    throw new Error("API_KEY_MISSING");
+    throw new Error("Discovery Engine Offline: API_KEY missing.");
   }
 
   const ai = new GoogleGenAI({ apiKey });
@@ -37,12 +38,12 @@ export async function findToolsForTask(query: string): Promise<AITool[]> {
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `List 20 actual, operational AI tools that help with: "${query}". 
-      Ensure links are real. Focus on high-utility tools only.`,
+      contents: `List 20 high-quality, actual AI tools relevant to: "${query}". 
+      Return verified operational links. Rank by professional utility.`,
       config: {
         responseMimeType: "application/json",
         responseSchema: TOOL_SCHEMA,
-        systemInstruction: "You are the lead intelligence analyst for AI Finder. Only provide real, verified tools. Rank them by quality and utility for the user's specific query."
+        systemInstruction: "You are the Intelligence Director for AI Finder. Provide strictly validated, operational tools. Format as high-precision JSON."
       },
     });
 

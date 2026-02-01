@@ -1,14 +1,14 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Results from './pages/Results';
-import Categories from './pages/Categories';
-import About from './pages/About';
-import SubmitTool from './pages/SubmitTool';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Navbar from './components/Navbar.tsx';
+import Footer from './components/Footer.tsx';
+import Home from './pages/Home.tsx';
+import Results from './pages/Results.tsx';
+import Categories from './pages/Categories.tsx';
+import About from './pages/About.tsx';
+import SubmitTool from './pages/SubmitTool.tsx';
+import Login from './pages/Login.tsx';
+import Signup from './pages/Signup.tsx';
 
 const App: React.FC = () => {
   return (
