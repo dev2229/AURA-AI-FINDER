@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { AITool } from "../types.ts";
+import { AITool } from "../types";
 
 const TOOL_SCHEMA = {
   type: Type.ARRAY,
@@ -26,7 +26,8 @@ const TOOL_SCHEMA = {
 };
 
 export async function findToolsForTask(query: string): Promise<AITool[]> {
-  const apiKey = process.env.API_KEY;
+  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : null;
+  
   if (!apiKey) {
     throw new Error("API_KEY_MISSING");
   }

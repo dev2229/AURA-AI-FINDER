@@ -7,6 +7,8 @@ import Results from './pages/Results';
 import Categories from './pages/Categories';
 import About from './pages/About';
 import SubmitTool from './pages/SubmitTool';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,8 @@ const App: React.FC = () => {
             <Route path="/categories" element={<Categories />} />
             <Route path="/about" element={<About />} />
             <Route path="/submit" element={<SubmitTool />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </main>
         <Footer />

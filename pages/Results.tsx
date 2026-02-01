@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
-import { findToolsForTask } from '../services/geminiService.ts';
-import { AITool, PricingModel } from '../types.ts';
-import ToolCard from '../components/ToolCard.tsx';
+import { findToolsForTask } from '../services/geminiService';
+import { AITool } from '../types';
+import ToolCard from '../components/ToolCard';
 
 const Results: React.FC = () => {
   const [searchParams] = useSearchParams();
