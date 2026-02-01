@@ -1,4 +1,3 @@
-
 import { Category } from './types';
 
 export const CATEGORIES: Category[] = [
@@ -12,4 +11,4 @@ export const CATEGORIES: Category[] = [
   { id: 'design', name: 'Design & UI', icon: '✨', description: 'Logo makers, UI generators, and layouts.' },
 ];
 
-export const APP_NAME = "Aura AI";
+export const APP_NAME = "AI Finder";
